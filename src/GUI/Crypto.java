@@ -317,7 +317,7 @@ public class Crypto extends javax.swing.JFrame {
         dataTowrite = dec.decrypt(readedData);
         operation = "decrypted";
     }//GEN-LAST:event_jLabel4MouseClicked
-
+//
     /**
      * @param args the command line arguments
      */
