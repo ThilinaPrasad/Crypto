@@ -51,11 +51,11 @@ public class Crypto extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        key = new javax.swing.JTextField();
+        saveBtn = new javax.swing.JLabel();
+        decBtn = new javax.swing.JLabel();
+        encBtn = new javax.swing.JLabel();
+        openBtn = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,88 +98,88 @@ public class Crypto extends javax.swing.JFrame {
         jPanel2.add(jLabel6);
         jLabel6.setBounds(288, 8, 24, 24);
 
-        jTextField1.setBackground(new java.awt.Color(0, 0, 37));
-        jTextField1.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("Crypt Key");
-        jTextField1.setToolTipText("Crypt Key");
-        jTextField1.setBorder(null);
-        jTextField1.setOpaque(false);
-        jPanel2.add(jTextField1);
-        jTextField1.setBounds(60, 230, 200, 40);
+        key.setBackground(new java.awt.Color(0, 0, 37));
+        key.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        key.setForeground(new java.awt.Color(255, 255, 255));
+        key.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        key.setText("Crypt Key");
+        key.setToolTipText("Crypt Key");
+        key.setBorder(null);
+        key.setOpaque(false);
+        jPanel2.add(key);
+        key.setBounds(60, 230, 200, 40);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/SAVE FILE_1.png"))); // NOI18N
-        jLabel5.setText("jLabel5");
-        jLabel5.setToolTipText("Save crypted data");
-        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        saveBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/SAVE FILE_1.png"))); // NOI18N
+        saveBtn.setText("jLabel5");
+        saveBtn.setToolTipText("Save crypted data");
+        saveBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        saveBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                saveBtnMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel5MouseEntered(evt);
+                saveBtnMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel5MouseExited(evt);
+                saveBtnMouseExited(evt);
             }
         });
-        jPanel2.add(jLabel5);
-        jLabel5.setBounds(40, 400, 240, 45);
+        jPanel2.add(saveBtn);
+        saveBtn.setBounds(40, 400, 240, 45);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/DECRYPT_1.png"))); // NOI18N
-        jLabel4.setText("jLabel4");
-        jLabel4.setToolTipText("Decrypt");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        decBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/DECRYPT_1.png"))); // NOI18N
+        decBtn.setText("jLabel4");
+        decBtn.setToolTipText("Decrypt");
+        decBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        decBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                decBtnMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel4MouseEntered(evt);
+                decBtnMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel4MouseExited(evt);
+                decBtnMouseExited(evt);
             }
         });
-        jPanel2.add(jLabel4);
-        jLabel4.setBounds(165, 345, 120, 45);
+        jPanel2.add(decBtn);
+        decBtn.setBounds(165, 345, 120, 45);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ENCRYPT_1.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        jLabel2.setToolTipText("Encrypt");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        encBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ENCRYPT_1.png"))); // NOI18N
+        encBtn.setText("jLabel2");
+        encBtn.setToolTipText("Encrypt");
+        encBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        encBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                encBtnMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel2MouseEntered(evt);
+                encBtnMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel2MouseExited(evt);
+                encBtnMouseExited(evt);
             }
         });
-        jPanel2.add(jLabel2);
-        jLabel2.setBounds(40, 345, 120, 45);
+        jPanel2.add(encBtn);
+        encBtn.setBounds(40, 345, 120, 45);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/OPEN FILE_1.png"))); // NOI18N
-        jLabel3.setText("jLabel3");
-        jLabel3.setToolTipText("Open file");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        openBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/OPEN FILE_1.png"))); // NOI18N
+        openBtn.setText("jLabel3");
+        openBtn.setToolTipText("Open file");
+        openBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        openBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                openBtnMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel3MouseEntered(evt);
+                openBtnMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel3MouseExited(evt);
+                openBtnMouseExited(evt);
             }
         });
-        jPanel2.add(jLabel3);
-        jLabel3.setBounds(40, 290, 240, 45);
+        jPanel2.add(openBtn);
+        openBtn.setBounds(40, 290, 240, 45);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/320x480.jpg"))); // NOI18N
         jPanel2.add(jLabel1);
@@ -204,37 +204,37 @@ public class Crypto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/OPEN FILE_2.png")));
-    }//GEN-LAST:event_jLabel3MouseEntered
+    private void openBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_openBtnMouseEntered
+        openBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/OPEN FILE_2.png")));
+    }//GEN-LAST:event_openBtnMouseEntered
 
-    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ENCRYPT_2.png")));
-    }//GEN-LAST:event_jLabel2MouseEntered
+    private void encBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_encBtnMouseEntered
+        encBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ENCRYPT_2.png")));
+    }//GEN-LAST:event_encBtnMouseEntered
 
-    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ENCRYPT_1.png")));
-    }//GEN-LAST:event_jLabel2MouseExited
+    private void encBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_encBtnMouseExited
+        encBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ENCRYPT_1.png")));
+    }//GEN-LAST:event_encBtnMouseExited
 
-    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/DECRYPT_2.png")));
-    }//GEN-LAST:event_jLabel4MouseEntered
+    private void decBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_decBtnMouseEntered
+        decBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/DECRYPT_2.png")));
+    }//GEN-LAST:event_decBtnMouseEntered
 
-    private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/DECRYPT_1.png")));
-    }//GEN-LAST:event_jLabel4MouseExited
+    private void decBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_decBtnMouseExited
+        decBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/DECRYPT_1.png")));
+    }//GEN-LAST:event_decBtnMouseExited
 
-    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/SAVE FILE_2.png")));
-    }//GEN-LAST:event_jLabel5MouseEntered
+    private void saveBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseEntered
+        saveBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/SAVE FILE_2.png")));
+    }//GEN-LAST:event_saveBtnMouseEntered
 
-    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/SAVE FILE_1.png")));
-    }//GEN-LAST:event_jLabel5MouseExited
+    private void saveBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseExited
+        saveBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/SAVE FILE_1.png")));
+    }//GEN-LAST:event_saveBtnMouseExited
 
-    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/OPEN FILE_1.png")));
-    }//GEN-LAST:event_jLabel3MouseExited
+    private void openBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_openBtnMouseExited
+        openBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/OPEN FILE_1.png")));
+    }//GEN-LAST:event_openBtnMouseExited
 
     private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/close_2.png")));
@@ -260,7 +260,7 @@ public class Crypto extends javax.swing.JFrame {
         this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_jLabel8MouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void openBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_openBtnMouseClicked
          JFileChooser chooser = new JFileChooser();
         chooser.setFileFilter(new TextFileFilter());
         int result = chooser.showOpenDialog(this);
@@ -279,19 +279,19 @@ public class Crypto extends javax.swing.JFrame {
                 System.out.println(readedData.toString());
                 br.close();
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                
             } catch (IOException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+              
             }
             //path.setText(readedData.toString());
         } else if (result == JFileChooser.CANCEL_OPTION) {
             chooser.disable();
         }
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_openBtnMouseClicked
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void saveBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseClicked
         try {
-            File f = new File("crypted.txt");
+            File f = new File(operation+".txt");
             FileWriter fr;
             fr = new FileWriter(f);
             BufferedWriter br = new BufferedWriter(fr);
@@ -304,19 +304,19 @@ public class Crypto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Data successfully "+operation+" & saved in to file!");
         } catch (IOException e) {
         }
-    }//GEN-LAST:event_jLabel5MouseClicked
+    }//GEN-LAST:event_saveBtnMouseClicked
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void encBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_encBtnMouseClicked
         Encrypt enc = new Encrypt();
-        dataTowrite = enc.encrypt(readedData);
+        dataTowrite = enc.encrypt(key.getText(),readedData);
         operation = "encrypted";
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_encBtnMouseClicked
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void decBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_decBtnMouseClicked
         Decrypt dec = new Decrypt();
-        dataTowrite = dec.decrypt(readedData);
+        dataTowrite = dec.decrypt(key.getText(),readedData);
         operation = "decrypted";
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_decBtnMouseClicked
 //
     /**
      * @param args the command line arguments
@@ -354,15 +354,15 @@ public class Crypto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel decBtn;
+    private javax.swing.JLabel encBtn;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField key;
+    private javax.swing.JLabel openBtn;
+    private javax.swing.JLabel saveBtn;
     // End of variables declaration//GEN-END:variables
 
     private static class TextFileFilter extends FileFilter {
