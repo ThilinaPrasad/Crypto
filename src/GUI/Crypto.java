@@ -105,6 +105,7 @@ public class Crypto extends javax.swing.JFrame {
         key.setText("Crypt Key");
         key.setToolTipText("Crypt Key");
         key.setBorder(null);
+        key.setCaretColor(new java.awt.Color(255, 255, 255));
         key.setOpaque(false);
         jPanel2.add(key);
         key.setBounds(60, 230, 200, 40);
