@@ -6,6 +6,7 @@
 package cipher;
 
 import GUI.Crypto;
+import javax.swing.UIManager;
 
 /**
  *
@@ -17,6 +18,13 @@ public class Cipher {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+            //UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+        } catch(Exception ex) {
+            //java.util.logging.Logger.getLogger(Crypto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+        
         Crypto cry = new Crypto();
         cry.setVisible(true);
     }

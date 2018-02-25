@@ -6,17 +6,22 @@
 package algo;
 
 import java.util.ArrayList;
-
+import algo.Shuffle;
 /**
  *
  * @author Thilina Prasad
  */
 public class Encrypt {
 
+    /**
+     * @return the keyOrd
+     */
+    public String getKeyOrd() {
+        return Integer.toString(keyOrd);
+    }
+private int keyOrd = 0;
     public ArrayList<String> encrypt(String key, ArrayList<String> text) {
-        int keyOrd = 0;
         ArrayList<String> crypted = new ArrayList<String>();
-
         for (int i = 0; i < key.length(); i++) {
             keyOrd += key.charAt(i);
         }
@@ -30,7 +35,7 @@ public class Encrypt {
                 //random.add(rand);
                 xored += (Character.toString((char) temp));
             }
-            crypted.add(xored);
+            crypted.add(Shuffle.shuffle(xored));
         }
         //System.out.println(random.toString());
         //System.out.println(xored.toString());

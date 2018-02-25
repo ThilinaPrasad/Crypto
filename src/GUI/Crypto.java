@@ -21,6 +21,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.filechooser.FileFilter;
 
 /**
@@ -30,8 +31,8 @@ import javax.swing.filechooser.FileFilter;
 public class Crypto extends javax.swing.JFrame {
 
     ArrayList<String> readedData = new ArrayList<>();
-    ArrayList<String> dataTowrite;
-    String operation;
+    ArrayList<String> dataTowrite ;
+    String seperator = "";
     /**
      * Creates new form Crypto
      */
@@ -49,6 +50,8 @@ public class Crypto extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        messeages1 = new javax.swing.JLabel();
+        messeages = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         key = new javax.swing.JTextField();
@@ -63,6 +66,19 @@ public class Crypto extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel2.setLayout(null);
+
+        messeages1.setFont(new java.awt.Font("Garamond", 1, 12)); // NOI18N
+        messeages1.setForeground(new java.awt.Color(255, 255, 255));
+        messeages1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        messeages1.setText("Crypt Key");
+        jPanel2.add(messeages1);
+        messeages1.setBounds(70, 210, 170, 15);
+
+        messeages.setFont(new java.awt.Font("Garamond", 1, 12)); // NOI18N
+        messeages.setForeground(new java.awt.Color(255, 255, 255));
+        messeages.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel2.add(messeages);
+        messeages.setBounds(10, 450, 300, 20);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/close_1.png"))); // NOI18N
         jLabel8.setToolTipText("Minimize");
@@ -99,10 +115,9 @@ public class Crypto extends javax.swing.JFrame {
         jLabel6.setBounds(288, 8, 24, 24);
 
         key.setBackground(new java.awt.Color(0, 0, 37));
-        key.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        key.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         key.setForeground(new java.awt.Color(255, 255, 255));
         key.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        key.setText("Crypt Key");
         key.setToolTipText("Crypt Key");
         key.setBorder(null);
         key.setCaretColor(new java.awt.Color(255, 255, 255));
@@ -262,27 +277,29 @@ public class Crypto extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void openBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_openBtnMouseClicked
-         JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser();
         chooser.setFileFilter(new TextFileFilter());
         int result = chooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
             File f = chooser.getSelectedFile();
             String filePath = f.getAbsolutePath();
             FileReader fr;
+
             try {
                 fr = new FileReader(f);
                 BufferedReader br = new BufferedReader(fr);
-                String temp ;
+                String temp;
                 while ((temp = br.readLine()) != null) {
                     //String temp = br.readLine();
                     readedData.add(temp);
                 }
                 System.out.println(readedData.toString());
                 br.close();
+                messeages.setText("Successfully Opened!");
             } catch (FileNotFoundException ex) {
-                
+
             } catch (IOException ex) {
-              
+
             }
             //path.setText(readedData.toString());
         } else if (result == JFileChooser.CANCEL_OPTION) {
@@ -291,34 +308,67 @@ public class Crypto extends javax.swing.JFrame {
     }//GEN-LAST:event_openBtnMouseClicked
 
     private void saveBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseClicked
-        try {
-            File f = new File(operation+".txt");
-            FileWriter fr;
-            fr = new FileWriter(f);
-            BufferedWriter br = new BufferedWriter(fr);
-            //System.out.println(dataTowrite.toString());
-            for (int i = 0; i < dataTowrite.size(); i++) {
-                br.write(dataTowrite.get(i));
-                br.newLine();
+        //System.out.println(dataTowrite.toString());
+        //if (dataTowrite.isEmpty()) {
+        JFileChooser chooser = new JFileChooser();
+        //chooser.setFileFilter(new TextFileFilter());
+        chooser.setDialogTitle("File save path");
+        //chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int result = chooser.showSaveDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            try {
+                File f = chooser.getSelectedFile();
+                //File f = new File(operation + ".txt");
+                FileWriter fr;
+                fr = new FileWriter(f);
+                BufferedWriter br = new BufferedWriter(fr);
+                //System.out.println(dataTowrite.toString());
+                
+                    for (int i = 0; i < dataTowrite.size(); i++) {
+                        br.write(dataTowrite.get(i));
+                        br.newLine();
+                    }
+                
+                br.close();
+                readedData.clear();
+                dataTowrite.clear();
+                messeages.setText("Successfully saved to file!");
+            } catch (IOException e) {
             }
-            br.close();
-            JOptionPane.showMessageDialog(this,"Data successfully "+operation+" & saved in to file!");
-        } catch (IOException e) {
+        } else if (result == JFileChooser.CANCEL_OPTION) {
+            chooser.disable();
         }
+        /*} else {
+                    messeages.setText("Do operation before save!");
+
+                }*/
     }//GEN-LAST:event_saveBtnMouseClicked
 
     private void encBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_encBtnMouseClicked
-        Encrypt enc = new Encrypt();
-        dataTowrite = enc.encrypt(key.getText(),readedData);
-        operation = "encrypted";
+        //System.out.println(!key.getText().equals(""));
+        if (!key.getText().trim().equals("")) {
+            Encrypt enc = new Encrypt();
+            dataTowrite = enc.encrypt(key.getText(), readedData);
+            
+            messeages.setText("Successfully encrypted!");
+        } else {
+            messeages.setText("Please Enter crypt key!");
+
+        }
     }//GEN-LAST:event_encBtnMouseClicked
 
     private void decBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_decBtnMouseClicked
-        Decrypt dec = new Decrypt();
-        dataTowrite = dec.decrypt(key.getText(),readedData);
-        operation = "decrypted";
+        if (!key.getText().trim().equals("")) {
+            Decrypt dec = new Decrypt();
+            dataTowrite = dec.decrypt(key.getText(), readedData);
+            messeages.setText("Successfully decrypted!");
+        } else {
+            messeages.setText("Please Enter crypt key!");
+
+        }
     }//GEN-LAST:event_decBtnMouseClicked
 //
+
     /**
      * @param args the command line arguments
      */
@@ -328,25 +378,8 @@ public class Crypto extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Crypto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Crypto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Crypto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Crypto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
+ /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Crypto().setVisible(true);
@@ -362,6 +395,8 @@ public class Crypto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField key;
+    private javax.swing.JLabel messeages;
+    private javax.swing.JLabel messeages1;
     private javax.swing.JLabel openBtn;
     private javax.swing.JLabel saveBtn;
     // End of variables declaration//GEN-END:variables

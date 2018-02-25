@@ -6,7 +6,7 @@
 package algo;
 
 import java.util.ArrayList;
-
+import algo.Shuffle;
 /**
  *
  * @author Thilina Prasad
@@ -28,7 +28,7 @@ public class Decrypt {
                 int deXored = charOrd ^ keyOrd;
                 xored += Character.toString((char) deXored);
             }
-            decrypted.add(xored);
+            decrypted.add(Shuffle.shuffle(xored));
         }
         return decrypted;
     }
