@@ -31,8 +31,9 @@ import javax.swing.filechooser.FileFilter;
 public class Crypto extends javax.swing.JFrame {
 
     ArrayList<String> readedData = new ArrayList<>();
-    ArrayList<String> dataTowrite ;
+    ArrayList<String> dataTowrite;
     String seperator = "";
+
     /**
      * Creates new form Crypto
      */
@@ -50,6 +51,7 @@ public class Crypto extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        openedFile = new javax.swing.JLabel();
         messeages1 = new javax.swing.JLabel();
         messeages = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -66,6 +68,12 @@ public class Crypto extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel2.setLayout(null);
+
+        openedFile.setFont(new java.awt.Font("Garamond", 1, 12)); // NOI18N
+        openedFile.setForeground(new java.awt.Color(0, 255, 0));
+        openedFile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel2.add(openedFile);
+        openedFile.setBounds(20, 280, 280, 10);
 
         messeages1.setFont(new java.awt.Font("Garamond", 1, 12)); // NOI18N
         messeages1.setForeground(new java.awt.Color(255, 255, 255));
@@ -283,6 +291,7 @@ public class Crypto extends javax.swing.JFrame {
         if (result == JFileChooser.APPROVE_OPTION) {
             File f = chooser.getSelectedFile();
             String filePath = f.getAbsolutePath();
+            System.out.println(f.getName());
             FileReader fr;
 
             try {
@@ -295,6 +304,7 @@ public class Crypto extends javax.swing.JFrame {
                 }
                 System.out.println(readedData.toString());
                 br.close();
+                openedFile.setText(f.getName());
                 messeages.setText("Successfully Opened!");
             } catch (FileNotFoundException ex) {
 
@@ -323,15 +333,16 @@ public class Crypto extends javax.swing.JFrame {
                 fr = new FileWriter(f);
                 BufferedWriter br = new BufferedWriter(fr);
                 //System.out.println(dataTowrite.toString());
-                
-                    for (int i = 0; i < dataTowrite.size(); i++) {
-                        br.write(dataTowrite.get(i));
-                        br.newLine();
-                    }
-                
+
+                for (int i = 0; i < dataTowrite.size(); i++) {
+                    br.write(dataTowrite.get(i));
+                    br.newLine();
+                }
+
                 br.close();
                 readedData.clear();
                 dataTowrite.clear();
+                openedFile.setText("Select another file!");
                 messeages.setText("Successfully saved to file!");
             } catch (IOException e) {
             }
@@ -347,9 +358,10 @@ public class Crypto extends javax.swing.JFrame {
     private void encBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_encBtnMouseClicked
         //System.out.println(!key.getText().equals(""));
         if (!key.getText().trim().equals("")) {
+            messeages.setText("Encrypting...");
             Encrypt enc = new Encrypt();
             dataTowrite = enc.encrypt(key.getText(), readedData);
-            
+
             messeages.setText("Successfully encrypted!");
         } else {
             messeages.setText("Please Enter crypt key!");
@@ -359,6 +371,7 @@ public class Crypto extends javax.swing.JFrame {
 
     private void decBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_decBtnMouseClicked
         if (!key.getText().trim().equals("")) {
+            messeages.setText("Decrypting...");
             Decrypt dec = new Decrypt();
             dataTowrite = dec.decrypt(key.getText(), readedData);
             messeages.setText("Successfully decrypted!");
@@ -398,6 +411,7 @@ public class Crypto extends javax.swing.JFrame {
     private javax.swing.JLabel messeages;
     private javax.swing.JLabel messeages1;
     private javax.swing.JLabel openBtn;
+    private javax.swing.JLabel openedFile;
     private javax.swing.JLabel saveBtn;
     // End of variables declaration//GEN-END:variables
 
