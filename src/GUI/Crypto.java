@@ -293,7 +293,7 @@ public class Crypto extends javax.swing.JFrame {
             String filePath = f.getAbsolutePath();
             System.out.println(f.getName());
             FileReader fr;
-
+            
             try {
                 fr = new FileReader(f);
                 BufferedReader br = new BufferedReader(fr);
