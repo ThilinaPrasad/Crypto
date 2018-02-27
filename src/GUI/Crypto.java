@@ -10,10 +10,15 @@ import algo.Encrypt;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -296,7 +301,7 @@ public class Crypto extends javax.swing.JFrame {
             
             try {
                 fr = new FileReader(f);
-                BufferedReader br = new BufferedReader(fr);
+                BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(f), StandardCharsets.UTF_8));
                 String temp;
                 while ((temp = br.readLine()) != null) {
                     //String temp = br.readLine();
@@ -329,9 +334,10 @@ public class Crypto extends javax.swing.JFrame {
             try {
                 File f = chooser.getSelectedFile();
                 //File f = new File(operation + ".txt");
-                FileWriter fr;
-                fr = new FileWriter(f);
-                BufferedWriter br = new BufferedWriter(fr);
+                //FileWriter fr;
+                //fr = new FileWriter(f);
+                
+                BufferedWriter br = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f), StandardCharsets.UTF_8));
                 //System.out.println(dataTowrite.toString());
 
                 for (int i = 0; i < dataTowrite.size(); i++) {
